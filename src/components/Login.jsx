@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = ({loggedIn , isLoggedIn, isSkippedLogin }) => {
+const Login = ({loggedIn , setLoggedIn, setLoginPage }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [usernameError, setUsernameError] = useState('');
@@ -12,13 +12,14 @@ const Login = ({loggedIn , isLoggedIn, isSkippedLogin }) => {
             return alert('please fill form');
         } 
         if(!loggedIn && (username.length >= 3 && password.length >= 8)){
-          isLoggedIn(true)
+          setLoggedIn(true)
+          setLoginPage(false)
         }
     }
   return (
     <>
     <div className="w-full min-h-screen flex items-center justify-center bg-stone-500">
-    <form onSubmit={handleSubmit} className="w-full max-w-sm">
+    <form onSubmit={handleSubmit} className="w-full max-w-xs">
         <div className="w-full p-4 rounded-md bg-stone-400 space-y-4 shadow-xl">
           <h2 className="text-center font-semibold text-xl">Login</h2>
           <div>
@@ -43,7 +44,7 @@ const Login = ({loggedIn , isLoggedIn, isSkippedLogin }) => {
           </div>
           <div className="space-y-2">
             <button type="submit" className="w-full bg-blue-600 font-semibold text-white p-2 rounded">Login</button>
-            <button type="button" className="w-full hover:underline" onClick={() => isSkippedLogin(true)}>Skip Login</button>
+            <button type="button" className="w-full hover:underline" onClick={() => setLoginPage(false)}>Skip Login</button>
           </div>
         </div>
       </form>
