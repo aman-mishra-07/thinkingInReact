@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -26,13 +27,17 @@ const App = () => {
             selectPage={setPage}
             setLoginPage={setLoginPage}
           />
-          {loggedIn ? (
-            (page === "home" && <Home loggedIn={loggedIn} />) ||
-            (page === "profile" && <Profile loggedIn={loggedIn} />) ||
-            (page === "settings" && <Settings loggedIn={loggedIn} />)
-          ) : (
-            <Home />
-          )}
+          {(page === "home" && <Home />) ||
+            (page === "profile" && (
+              <ProtectedRoutes loggedIn={loggedIn}>
+                <Profile />
+              </ProtectedRoutes>
+            )) ||
+            (page === "settings" && (
+              <ProtectedRoutes loggedIn={loggedIn}>
+                <Settings />
+              </ProtectedRoutes>
+            ))}
         </div>
       )}
     </>
