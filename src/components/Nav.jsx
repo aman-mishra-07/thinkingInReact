@@ -2,7 +2,6 @@ import React from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { IoIosLogIn } from "react-icons/io";
 
-
 const Nav = ({ loggedIn, setLoggedIn, selectPage, setLoginPage }) => {
   return (
     <>
@@ -45,23 +44,25 @@ const Nav = ({ loggedIn, setLoggedIn, selectPage, setLoginPage }) => {
             </button>
           </li>
           <li>
-            {loggedIn ? (
+            {
               <button
                 type="button"
-                className="font-semibold rounded-lg p-2 bg-slate-300 flex items-center gap-1"
-                onClick={() => setLoggedIn(false)}
+                className="font-semibold rounded-lg p-2 bg-slate-300 "
+                onClick={() =>
+                  loggedIn ? setLoggedIn(false) : setLoginPage(true)
+                }
               >
-                Logout <IoIosLogOut size={20} />
+                {loggedIn ? (
+                  <span className="flex items-center gap-1">
+                    Logout <IoIosLogOut size={20} />
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-1">
+                    Login <IoIosLogIn size={20} />  
+                  </span>
+                )}
               </button>
-            ) : (
-              <button
-                type="button"
-                className="font-semibold rounded-lg p-2 bg-slate-600 text-white flex items-center gap-1"
-                onClick={() => setLoginPage(true)}
-              >
-                Login <IoIosLogIn size={20}/>
-              </button>
-            )}
+            }
           </li>
         </ul>
       </div>

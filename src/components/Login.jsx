@@ -19,9 +19,9 @@ const Login = ({ loggedIn, setLoggedIn, setLoginPage }) => {
   };
   return (
     <>
-      <div className="w-full min-h-screen flex items-center justify-center bg-stone-500">
+      <div className="w-full min-h-screen  flex items-center justify-center primary-bg">
         <form onSubmit={handleSubmit} className="w-full max-w-xs">
-          <div className="w-full p-8 rounded-lg bg-stone-400  backdrop-blur-md space-y-4 shadow-xl">
+          <div className="w-full p-8 rounded-lg bg-sky-300 bg-opacity-80 backdrop-blur-lg space-y-4 shadow-xl">
             <span className="flex flex-col items-center gap-4 text-blue-700">
               <FaReact className="animate-spin-slow" size={50}/>
               <span className="font-semibold text-3xl">Learn React Js</span>

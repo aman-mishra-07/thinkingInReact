@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import Login from "./components/Login";
-import Home from "./pages/Home";
 import Nav from "./components/Nav";
-import Profile from "./pages/Profile";
-import Settings from "./pages/Settings";
-import ProtectedRoutes from "./components/ProtectedRoutes";
+import RenderPage from "./components/RenderPage";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -27,17 +24,7 @@ const App = () => {
             selectPage={setPage}
             setLoginPage={setLoginPage}
           />
-          {(page === "home" && <Home />) ||
-            (page === "profile" && (
-              <ProtectedRoutes loggedIn={loggedIn}>
-                <Profile />
-              </ProtectedRoutes>
-            )) ||
-            (page === "settings" && (
-              <ProtectedRoutes loggedIn={loggedIn}>
-                <Settings />
-              </ProtectedRoutes>
-            ))}
+          <RenderPage page={page} loggedIn={loggedIn}/> 
         </div>
       )}
     </>
