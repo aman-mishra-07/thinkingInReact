@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Login from "./components/Login";
 import Nav from "./components/Nav";
 import RenderPage from "./components/RenderPage";
+import SignUp from "./components/SignUp";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -24,34 +25,12 @@ const App = () => {
             selectPage={setPage}
             setLoginPage={setLoginPage}
           />
-          <RenderPage page={page} loggedIn={loggedIn}/> 
+          <RenderPage page={page} loggedIn={loggedIn} />
         </div>
       )}
+      {/* <SignUp/> */}
     </>
   );
 };
 
 export default App;
-
-{
-  /* {(skipLogin || loggedIn) && (
-  <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} selectPage={setPage} />
-)}
-
-{skipLogin &&
-  ((page === "home" && <Home loggedIn={loggedIn} />) ||
-    (page === "profile" && <Profile loggedIn={loggedIn} />) ||
-    (page === "settings" && <Settings loggedIn={loggedIn} />))}
-
-{loggedIn
-  ? (page === "home" && <Home loggedIn={loggedIn} />) ||
-    (page === "profile" && <Profile loggedIn={loggedIn} />) ||
-    (page === "settings" && <Settings loggedIn={loggedIn} />)
-  : !skipLogin && (
-      <Login
-        loggined={loggedIn}
-        isLoggedIn={setLoggedIn}
-        isSkippedLogin={setSkipLogin}
-      />
-    )} */
-}
